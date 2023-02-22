@@ -1,0 +1,149 @@
+body {
+   background-color: #fffbeb;
+   font-family: 'Franklin Gothic Medium', Arial, sans-serif;
+}
+
+
+/* :is selects what you define inside the ( ) 
+   It can be more efficient than a , separated list
+-------------------------------------------------- */
+
+/* ⬇︎ Replace this with an :is selector ⬇︎ */
+
+section:is(.gallery, .gallery-square) {
+   display: grid;
+   grid-template-columns: 1fr 1fr 1fr;
+   grid-gap: 1rem;
+   background-color: #c0cac9;
+   border: 2px solid #89a0ae;
+   justify-content: space-around;
+   align-items: center;
+   border-radius: 1rem;
+   padding: 1.5rem;
+   max-width: 80%;
+   margin: 1em auto;
+}
+
+section:is(.gallery, .gallery-square) img {
+   max-width: 100%;
+   border: 3px solid white;
+   border-radius: 4rem;
+   box-shadow: 0 10px 10px -10px black;
+   transition: all 2s ease;
+   animation: picfade 1.5s ease 1s backwards;
+}
+
+section:is(.gallery, .gallery-square) img:hover {
+   transform: scale(1.5);
+   position: relative;
+   z-index: 2;
+   border-radius: 0;
+   box-shadow: 0 20px 30px black;
+}
+
+
+section:hover img:not(:hover) {
+   transform: scale(.9);
+   opacity: 30%;
+   filter: blur(3px);
+}
+
+
+@keyframes picfade {
+   from {
+      transform: scale(.5);
+      filter: blur(15px);
+      opacity: 0;
+   }
+
+   to {
+      opacity: 1;
+   }
+}
+
+
+
+
+
+/* :has selects elements that contain what you specify
+-------------------------------------------------- */
+
+section:has(ul) {
+   border: 3px solid #cacbca;
+   background-color: #e8e8e8;
+   padding: 1rem;
+   margin: 2rem 0;
+   font-size: 2rem;
+   text-align: center;
+}
+
+section:has(ul) ul {
+   display: flex;
+   justify-content: space-around;
+   list-style-type: none;
+}
+
+section:has(ul) h2 {
+   border-bottom: 3px solid #cacbca;
+   margin-bottom: .75rem;
+   padding-bottom: .75rem;
+}
+
+
+
+
+
+
+
+
+
+header {
+   background-color: #dedfd7;
+   text-align: center;
+   padding: 2rem;
+   font-size: 2.5rem;
+   animation: header-slide 1s ease forwards;
+}
+
+@keyframes header-slide {
+   0% {
+      opacity: 0;
+      box-shadow: 0;
+      transform: translateY(-100px);
+   }
+
+   60% {
+      transform: translateY(5px);
+      transform: scale(1.05);
+      box-shadow: 0 30px 30px -10px;
+   }
+
+   100% {
+      transform: translateY(0);
+      box-shadow: 0 10px 20px -10px;
+   }
+}
+
+
+
+
+
+/* -------------------------------------
+
+Keyframe animations give you more control than what you can achieve with a CSS transition
+
+
+The animation property has many different parts:
+   animation-name:
+   animation-duration:
+   animation-timing-function:
+   animation-delay:
+   animation-iteration-count:
+   animation-direction: 
+   animation-fill-mode: 
+   
+That's a lot to type so you can combine them into a single line with the the syntax shown below:
+
+   animation: name duration timing-function delay iteration-count direction fill-mode; 
+
+------------------------------------- */
